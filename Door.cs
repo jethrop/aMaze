@@ -5,9 +5,9 @@ using UnityEngine;
 public class Door : MonoBehaviour 
 {
     // Create a boolean value called "locked" that can be checked in OnDoorClicked() 
-	bool locked = true;
+	bool locked;
     // Create a boolean value called "opening" that can be checked in Update() 
-	bool opening = false;
+	bool opening;
 	public float stopHeight;
 	//Audio
 	public AudioClip[] doorSounds;
