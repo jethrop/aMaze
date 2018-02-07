@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -14,8 +14,8 @@ public class Door : MonoBehaviour
 	public AudioSource doorSoundSource;
 
 	void Start () {
-		locked.Equals (true);
-		opening.Equals (false);
+		locked = true;
+		opening = false;
 		print ("locked is");
 		print (locked);
 		print ("opening is");
@@ -25,15 +25,16 @@ public class Door : MonoBehaviour
 
 public void Unlock () {
 	// You'll need to set "locked" to false here
-	locked.Equals (false);
-	print ("Door is unlocked");
+		locked = false;
 		print (locked);
+		print ("Door is unlocked");
+
 }	
     public void OnDoorClicked() {
         // If the door is clicked and unlocked
             // Set the "opening" boolean to true
-		if (locked.Equals (false)) {
-			opening.Equals (true); 
+		if (locked == false ) {
+			opening = true; 
 			print ("Door should be opening");
 		} else {
 			doorSoundSource.clip = doorSounds [1];
@@ -46,10 +47,10 @@ public void Unlock () {
 
 
 void Update() {
-		print (locked);
+		//print (locked);
 		//print (opening);
-		while (opening.Equals (true)) {
-			if (transform.position.y < stopHeight) {
+		if (opening == true) {
+			while (transform.position.y < stopHeight) {
 				transform.Translate (0, 2.5f * Time.deltaTime, 0, Space.World);
 				doorSoundSource.clip = doorSounds [0];
 				doorSoundSource.Play ();
